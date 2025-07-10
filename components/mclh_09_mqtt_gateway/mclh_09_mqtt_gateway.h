@@ -27,7 +27,7 @@ const char *ADVR_MODEL = "4D434C482D3039";
 
 std::vector<float> temp_input{1035, 909, 668, 424, 368, 273, 159, 0};
 std::vector<float> temp_output{68.8, 49.8, 24.3, 6.4, 1.0, -5.5, -20.5, -41.0};
-std::vector<float> soil_input{1254, 1249, 1202, 1104, 944, 900};
+std::vector<float> soil_input{1230, 1210, 1160, 1104, 944, 900};
 std::vector<float> soil_output{100.0, 85.0, 60.0, 30.0, 15.0, 0.0};
 std::vector<float> lumi_input{911, 764, 741, 706, 645, 545, 196, 117, 24, 17, 0};
 std::vector<float> lumi_output{175300.0, 45400.0, 32100.0, 20300.0, 14760.0, 7600.0, 1200.0, 444.0, 29.0, 17.0, 0.0};
