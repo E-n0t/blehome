@@ -182,7 +182,7 @@ public:
               this->error_count = error_count;
             })});
 
-    set_component_source(id.c_str());
+    set_component_source(LOG_STR(id.c_str()));
     ble_host->register_ble_client(this->ble_client_);
     App.register_component(this->ble_client_);
   }
