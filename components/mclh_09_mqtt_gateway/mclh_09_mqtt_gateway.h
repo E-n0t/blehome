@@ -197,29 +197,7 @@ public:
     ESP_LOGCONFIG(TAG, "  Alert Command Topic: '%s'", alert_set_topic.c_str());
   }
 
-  void setup() override {
-    ESP_LOGV(this->id.c_str(), "Setup");
-    // use preferences to load/save selected alert
-    this->pref_ = global_preferences->make_preference<size_t>(fnv1_hash(this->id), true);
-    if (!this->pref_.load(&this->alert_selected) || this->alert_selected >= alert_options.size()) {
-      ESP_LOGD(this->id.c_str(), "Unkwnown/new alert state pref: %d", this->alert_selected);
-      this->alert_selected = 0;
-    }
-    this->new_alert = true;
-
-    // subsribe for alert command topic
-    this->mqtt_client_->subscribe(this->alert_set_topic, [=, this](const std::string &topic, const std::string &payload) {
-      ESP_LOGD(this->id.c_str(), "Alert: '%s'", payload.c_str());
-      for (size_t i = 0; i < alert_options.size(); i++)
-        if (strncmp(alert_options[i].c_str(), payload.c_str(), alert_options[i].length()) == 0) {
-          this->set_alert(i);
-          this->ble_client_->force_update();
-          return;
-        }
-      ESP_LOGE(this->id.c_str(), "Unkown alert '%s' received!", payload.c_str());
-      this->set_alert(this->alert_selected);
-    });
-  }
+  
 
   void loop() override {
     // idle until next time processing
