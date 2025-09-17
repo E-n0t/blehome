@@ -293,7 +293,7 @@ private:
   ESPPreferenceObject pref_;
   uint64_t address_;
   std::string id, name, topic_prefix, status_topic, state_topic, alert_state_topic, alert_set_topic;
-  char temp_buffer[1024], temp_digit[8];
+  char temp_buffer[512], temp_digit[8];
   bool device_has_availability;
   const char *payload_online, *payload_offline;
   bool connected = false, online = false, prev_online = false, new_state = false, new_alert = false;
